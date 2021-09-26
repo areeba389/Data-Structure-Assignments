@@ -30,7 +30,7 @@ void creat(int n)
 	 	 }
 	
 }
-}
+
  
  
  void display(struct Node *p)
