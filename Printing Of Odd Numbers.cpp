@@ -6,12 +6,12 @@ struct node
 	struct  node*next;
 }*head=NULL,*tail;
 
-void creat(int n)
+void create(int n)
 {
 	     
 		 for (int i=0;i<n;i++)
 {
-	  struct Node *temp=(struct Node *)malloc(size of (struct Node));
+	  struct node *temp=(struct node *)malloc(sizeof (struct node));
 	  printf("enter data :  ");
 	  scanf("%d" ,&temp->data);
 	  if(head==NULL)
@@ -30,23 +30,23 @@ void creat(int n)
 	 	 }
 	
 }
-
+}
  
  
- void display(struct Node *p)
+ void display(struct node *p)
  {
  	
  	while(p!=NULL)
 	 {
 	 	
-	 	printf("%d  \t" ,head->data);
+	 	printf("%d \t" ,p->data);
 	 	p=p->next;
 	
 	 }
 	 printf("\n");
  }
  
-void print_odd(struct Node *p)
+void print_even(struct node *p)
 
 {
 	
@@ -54,9 +54,9 @@ void print_odd(struct Node *p)
 	while(p!=NULL)
 	{
 		
-	 of (p->data%2!=0)
+	 if (p->data%2!=0)
 	 {
-	 	printf("%d\t,p->data");
+	 	printf("%d\t",p->data);
 	 }
 	 p=p->next;
 	}
@@ -66,7 +66,7 @@ void print_odd(struct Node *p)
 	
 	int main()
 	{
-		ceate(5);
+		create(5);
 		display(head);
 		print_odd(head);
 	}
@@ -74,6 +74,3 @@ void print_odd(struct Node *p)
 	
 	
 	
-	
-}
-
