@@ -44,7 +44,7 @@ while (1);
        for(i=1;i<=n;i++)
        {
            
-           temp=(struct node*)malloc(size of (struct node));
+           temp=(struct node*)malloc(sizeof (struct node));
            printf("enter data");
            if("%d",temp->data);
            
