@@ -1,63 +1,84 @@
-#include<iostream>
-using namespace std;
-struct node{
-	int data;
-	struct node *next;
-}*head,*tail;
-void createnode(node** head,int data){
-	node* newnode = new node; 
-    newnode->data = data; 
-    newnode->next = (*head); 
-    (*head) = newnode;
-}
-void display(struct node *p)
-{
-	while(p!=NULL)
+#include<stdio.h>
+#include<stdlib.h>
+
+struct Node
 	{
-		cout<<p->data<<" ";
-		p=p->next;
+		int data;
+		struct Node *next;
+	}*head=NULL;
+	
+int create()
+	{
+		int n;  	//No. of Nodes
+		printf("Enter the number of Nodes : ");
+		scanf("%d",&n);
+		printf("\n");
+		struct Node *temp,*tail;
+		for(int i=0;i<n;i++)	//Creating n number of nodes
+			{
+				temp=(struct Node *)malloc(sizeof(struct Node));
+				printf("Enter data for Node %d :",i+1);
+				scanf("%d",&temp->data);
+				temp->next=NULL;
+				if(head==NULL)
+					{
+						head=temp;
+						tail=temp;
+					}
+				else
+					{
+						tail->next=temp;
+						tail=temp;
+					}
+					
+			}
+			temp->next=NULL;
+			
 	}
-	cout<<endl;
 	
-}
-int  checkprime(int n) 
-{  
-  if ((n == 2) || (n == 3)){
-  	return n;  
-  }  
-  if(n==1 || n%2==0 || n%3==0){
-  	return -1;
-  }
-  for(int i=5;i*i<=n;i=i+6){
-  	if(n%i==0 || n%(i+2)==0){
-  		return -1;
-	  }
-  }
-  return n; 
-}
-void printprime(node** head) 
-{ 
-  node* ptr = *head; 
-  while(ptr!= NULL) {
-  	  int p=checkprime(ptr->data);
-      if (p!=-1) { 
-        cout << p<< " ";
-      }
-      ptr = ptr->next; 
-  }
-} 
-int main() {
-	node* head=NULL;
-	createnode(&head,11);
-	createnode(&head,6);
-	createnode(&head,5);
-	createnode(&head,56778);
-	createnode(&head,9999999);
-	cout<<"Linked list: ";
-	display(head);
-	cout<<"Prime nodes in the linked list:";
-	printprime(&head);
-	return 0;
-	
-	
-}
+void print_prime(struct Node *p)
+		{
+			int flag=0;
+			while(p!=NULL)
+				{
+					if(p->data==2)
+						{
+							printf("%d\t", p->data);
+							p=p->next;
+							continue;
+						}
+					for(int i=2;i<p->data;i++)
+						{
+							if(p->data % i != 0 )
+								flag=1;
+							else{
+									flag=0;
+									break;
+								}
+						}
+						if(flag==1)
+							{
+								printf("%d\t",p->data);
+							}
+						p=p->next;
+				}
+		}
+void display(struct Node *p)	//DISPLAYING LINKED LIST
+	{
+		while(p!=NULL)
+			{
+				printf("%d ",p->data);
+				p=p->next;
+			}
+			printf("\n\n");
+	}
+
+int main()
+	{
+		create();
+		printf("You Entered : ");
+		display(head);
+		printf("Prime Numbers in this Linked List are : ");
+		print_prime(head);
+		
+	}
